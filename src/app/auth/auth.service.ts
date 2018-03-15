@@ -2,8 +2,9 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 
-import {User} from "./user";
-import {Response} from "./response";
+import {User} from "./models/user";
+import {ResponseDto} from "./models/response-dto";
+import {LoginRequest} from "./models/login-request";
 
 @Injectable()
 export class AuthService {
@@ -20,19 +21,15 @@ export class AuthService {
     return this.http.post(url, body, options);
   }
 
-  signIn(username, password): Observable<Response> {
-    const requestParam = {
-      username: username,
-      password: password
-    };
-    return this.post(this.loginURL, requestParam);
+  signIn(loginRequest: LoginRequest): Observable<ResponseDto> {
+    return this.post(this.loginURL, loginRequest);
   }
 
-  signUp(user: User): Observable<Response> {
+  signUp(user: User): Observable<ResponseDto> {
     return this.post(this.registerURL, user);
   }
 
-  signOut(): Observable<Response> {
+  signOut(): Observable<ResponseDto> {
     const token = localStorage.getItem('token');
     localStorage.clear();
     return this.post(this.logoutURL, token);

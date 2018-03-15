@@ -2,8 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from "../auth.service";
-import {User} from "../user";
+import {User} from "../models/user";
+import {AutoUnsubscribe} from "ngx-auto-unsubscribe";
 
+@AutoUnsubscribe()
 @Component({
   selector: 'app-registration-page',
   templateUrl: './registration-page.component.html',
@@ -30,14 +32,12 @@ export class RegistrationPageComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('submit');
     if (this.signupForm.value.password === this.signupForm.value.confirm) {
       this.passwordsAreSame = true;
       const formValue = this.signupForm.value;
       const user: User = new User(formValue.surename, formValue.name, formValue.patronymic, formValue.email, formValue.password);
       this.authService.signUp(user).subscribe(
         res => {
-          console.log('yahooo!!!');
           if (res.ok) {
             this.router.navigate(['sign-in']);
           }
