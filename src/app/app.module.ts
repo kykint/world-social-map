@@ -3,28 +3,56 @@ import {NgModule} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {AppComponent} from './app.component';
+//import {appRoutes} from "./routes";
 import {RegistrationPageComponent} from './auth/registration-page/registration-page.component';
-import {AuthService} from "./auth/auth.service";
-import {HttpClient, HttpHandler} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RouterModule} from "@angular/router";
-import {appRoutes} from "./routes";
+import {RouterModule, Routes} from "@angular/router";
+import {TestPageComponent} from './auth/registratiom-test/test-page/test-page.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from "@angular/material";
+import {MatMenuModule} from '@angular/material/menu';
+
+import {MatCardModule} from '@angular/material/card';
+import {RegCardComponent} from './auth/registration-page/reg-card/reg-card.component';
+
+const appRoutes: Routes = [
+  {path: 'registration-page', component: RegistrationPageComponent},
+  {path: 'test-page', component: TestPageComponent},
+
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    TestPageComponent,
+
+    RegCardComponent,
+
   ],
   imports: [
+    MatCardModule,
+
+
     BrowserModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    MatIconModule,
+    MatMenuModule,
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing: true}),// <-- debugging purposes only
   ],
-  providers: [AuthService, HttpClient, HttpHandler],
+  providers: [
+    //AuthService, HttpClient, HttpHandler
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
