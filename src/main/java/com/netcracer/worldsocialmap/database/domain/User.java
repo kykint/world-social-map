@@ -16,18 +16,19 @@ import java.util.UUID;
 public class User {
 
     public User() {
+        this.salt = BCrypt.gensalt();
     }
 
-    public User(String email, String password, String surName, String name, String patronimyc, String birthDate, String city) {
-        this.email = email;
-        this.surName = surName;
-        this.name = name;
-        this.patronimyc = patronimyc;
-        this.birthDate = birthDate;
-        this.city = city;
-        this.salt = BCrypt.gensalt();
-        this.password = BCrypt.hashpw(password, this.salt);
-    }
+//    public User(String email, String password, String surName, String name, String patronimyc, String birthDate, String city) {
+//        this.email = email;
+//        this.surName = surName;
+//        this.name = name;
+//        this.patronimyc = patronimyc;
+//        this.birthDate = birthDate;
+//        this.city = city;
+//        this.salt = BCrypt.gensalt();
+//        this.password = BCrypt.hashpw(password, this.salt);
+//    }
 
     @Id
     @Column(name = "user_id")
