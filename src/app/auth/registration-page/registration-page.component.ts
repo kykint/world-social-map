@@ -25,6 +25,8 @@ export class RegistrationPageComponent implements OnInit {
       'surename': ['', [Validators.required]],
       'name': ['', [Validators.required]],
       'patronymic': ['', Validators.required],
+      'birthDate': [new Date(), Validators.required],
+      'city': ['', Validators.required],
       'email': ['', [Validators.required, Validators.email]],
       'password': ['', [Validators.required, Validators.minLength(6)]],
       'confirm': ['', [Validators.required]]
@@ -35,7 +37,8 @@ export class RegistrationPageComponent implements OnInit {
     if (this.signupForm.value.password === this.signupForm.value.confirm) {
       this.passwordsAreSame = true;
       const formValue = this.signupForm.value;
-      const user: User = new User(formValue.surename, formValue.name, formValue.patronymic, formValue.email, formValue.password);
+      const {surename, name, patronymic, birthDate, city, email, password} = this.signupForm.value;
+      const user: User = new User(surename, name, patronymic, birthDate, city, email, password);
       this.authService.signUp(user).subscribe(
         res => {
           if (res.ok) {

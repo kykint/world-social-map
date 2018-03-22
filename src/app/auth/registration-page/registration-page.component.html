@@ -28,6 +28,19 @@
            required>
     <p class="help-block" *ngIf="!signupForm.get('patronymic').valid && signupForm.get('patronymic').touched">Пожалуйста
       введите отчество.</p>
+    <label for="birthDate" class="sr-only">Birth Date</label>
+    <input formControlName="birthDate"
+           type="date"
+           id="birthDate"
+           class="form-control"
+           required>
+    <label for="city" class="sr-only">City</label>
+    <input formControlName="city"
+           type="text"
+           id="city"
+           placeholder="city"
+           class="form-control"
+           required>
     <label for="email" class="sr-only">Login</label>
     <input formControlName="email"
            type="email"

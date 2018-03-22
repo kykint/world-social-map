@@ -11,31 +11,42 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./routes";
 import { LoginPageComponent } from './auth/login-page/login-page.component';
-import {MatToolbarModule} from "@angular/material";
+import {MatButtonToggleModule, MatExpansionModule, MatListModule, MatToolbarModule} from "@angular/material";
 import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-
+import {DateValueAccessorModule} from "angular-date-value-accessor";
+import { CountryFormComponent } from './home/country-form/country-form.component';
+import {VisitedCountriesComponent} from "./home/visited-countries/visited-countries.component";
+import { VisitedCountryComponent } from './home/visited-countries/visited-country/visited-country.component';
+import {VisitedCountryService} from "./home/services/visited-country/visited-country.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationPageComponent,
     LoginPageComponent,
-    HomeComponent
+    HomeComponent,
+    CountryFormComponent,
+    VisitedCountriesComponent,
+    VisitedCountryComponent
   ],
   imports: [
     BrowserModule,
     MatButtonModule,
+    MatButtonToggleModule,
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
+    MatExpansionModule,
+    MatListModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    DateValueAccessorModule
   ],
-  providers: [AuthService, HttpClient],
+  providers: [AuthService, HttpClient, VisitedCountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
