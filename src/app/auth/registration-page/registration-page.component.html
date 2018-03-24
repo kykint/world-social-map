@@ -1,63 +1,220 @@
-<div class="container">
-  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="form-signin">
-    <h2 class="form-signin-heading">Please sign up</h2>
-    <label for="surename" class="sr-only">Surename</label>
-    <input formControlName="surename"
-           type="text"
-           id="surename"
-           class="form-control"
-           placeholder="Фамилия"
-           required autofocus>
-    <p class="help-block" *ngIf="!signupForm.get('surename').valid && signupForm.get('surename').touched">Пожалуйста
-      введите фамилию.</p>
-    <label for="name" class="sr-only">Name</label>
-    <input formControlName="name"
-           type="text"
-           id="name"
-           class="form-control"
-           placeholder="Имя"
-           required>
-    <p class="help-block" *ngIf="!signupForm.get('name').valid && signupForm.get('name').touched">Пожалуйста введите
-      имя.</p>
-    <label for="patronymic" class="sr-only">patronymic</label>
-    <input formControlName="patronymic"
-           type="text"
-           id="patronymic"
-           class="form-control"
-           placeholder="Отчество"
-           required>
-    <p class="help-block" *ngIf="!signupForm.get('patronymic').valid && signupForm.get('patronymic').touched">Пожалуйста
-      введите отчество.</p>
-    <label for="email" class="sr-only">Login</label>
-    <input formControlName="email"
-           type="email"
-           id="email"
-           class="form-control"
-           placeholder="Почтовый адрес"
-           required autofocus>
-    <p class="help-block" *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">Пожалуйста введите
-      почтовый адрес.</p>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input formControlName="password"
-           type="password"
-           id="inputPassword"
-           class="form-control"
-           placeholder="Password"
-           required>
-    <p class="help-block" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">Please enter
-      password.</p>
-    <input formControlName="confirm"
-           type="password"
-           id="confirmPassword"
-           class="form-control"
-           placeholder="Confirm password"
-           required>
-    <p class="help-block" *ngIf="!signupForm.get('confirm').valid && signupForm.get('confirm').touched">Please confirm
-      password.</p>
-    <p class="alert alert-danger" *ngIf="!passwordsAreSame">AAAA! They aren't same!!!</p>
-    <button type="submit"
+<!--<div class="container">-->
+<!--<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="form-signin">-->
+<!--<h2 class="form-signin-heading">Please sign up</h2>-->
+<!--<label for="surename" class="sr-only">Surename</label>-->
+<!--<input formControlName="surename"-->
+<!--type="text"-->
+<!--id="surename"-->
+<!--class="form-control"-->
+<!--placeholder="Фамилия"-->
+<!--required autofocus>-->
+<!--<p class="help-block" *ngIf="!signupForm.get('surename').valid && signupForm.get('surename').touched">Пожалуйста-->
+<!--введите фамилию.</p>-->
+<!--<label for="name" class="sr-only">Name</label>-->
+<!--<input formControlName="name"-->
+<!--type="text"-->
+<!--id="name"-->
+<!--class="form-control"-->
+<!--placeholder="Имя"-->
+<!--required>-->
+<!--<p class="help-block" *ngIf="!signupForm.get('name').valid && signupForm.get('name').touched">Пожалуйста введите-->
+<!--имя.</p>-->
+<!--<label for="patronymic" class="sr-only">patronymic</label>-->
+<!--<input formControlName="patronymic"-->
+<!--type="text"-->
+<!--id="patronymic"-->
+<!--class="form-control"-->
+<!--placeholder="Отчество"-->
+<!--required>-->
+<!--<p class="help-block" *ngIf="!signupForm.get('patronymic').valid && signupForm.get('patronymic').touched">Пожалуйста-->
+<!--введите отчество.</p>-->
+<!--<label for="email" class="sr-only">Login</label>-->
+<!--<input formControlName="email"-->
+<!--type="email"-->
+<!--id="email"-->
+<!--class="form-control"-->
+<!--placeholder="Почтовый адрес"-->
+<!--required autofocus>-->
+<!--<p class="help-block" *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">Пожалуйста введите-->
+<!--почтовый адрес.</p>-->
+<!--<label for="inputPassword" class="sr-only">Password</label>-->
+<!--<input formControlName="password"-->
+<!--type="password"-->
+<!--id="inputPassword"-->
+<!--class="form-control"-->
+<!--placeholder="Password"-->
+<!--required>-->
+<!--<p class="help-block" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">Please enter-->
+<!--password.</p>-->
+<!--<input formControlName="confirm"-->
+<!--type="password"-->
+<!--id="confirmPassword"-->
+<!--class="form-control"-->
+<!--placeholder="Confirm password"-->
+<!--required>-->
+<!--<p class="help-block" *ngIf="!signupForm.get('confirm').valid && signupForm.get('confirm').touched">Please confirm-->
+<!--password.</p>-->
+<!--<p class="alert alert-danger" *ngIf="!passwordsAreSame">AAAA! They aren't same!!!</p>-->
+<!--<button type="submit"-->
+<!--[disabled]="signupForm.pristine || signupForm.invalid"-->
+<!--class="btn btn-lg btn-primary btn-block">SignIn-->
+<!--</button>-->
+<!--</form>-->
+<!--</div>-->
+
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <!--<div mat-card-avatar class="example-header-image"></div>-->
+    <mat-card-title>
+      <!--Register form-->
+
+      <h2 class="form-signin-heading">Please sign up</h2>
+
+    </mat-card-title>
+    <!--<mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
+  </mat-card-header>
+  <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+  <mat-card-content>
+
+    <!--<form class="example-form">-->
+
+    <!--<mat-form-field class="example-full-width">-->
+
+    <!--<input matInput placeholder="First name" value="Sushi">-->
+
+    <!--<input matInput placeholder="Email" [formControl]="emailFormControl"-->
+    <!--[errorStateMatcher]="matcher">-->
+    <!--&lt;!&ndash;<mat-hint>Errors appear instantly!</mat-hint>&ndash;&gt;-->
+    <!--<mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">-->
+    <!--Please enter a valid email address-->
+    <!--</mat-error>-->
+    <!--<mat-error *ngIf="emailFormControl.hasError('required')">-->
+    <!--Email is <strong>required</strong>-->
+    <!--</mat-error>-->
+    <!--</mat-form-field>-->
+    <!--</form>-->
+
+    <!--<mat-form-field class="example-full-width">-->
+    <!--<input type="password" matInput placeholder="Password">-->
+    <!--</mat-form-field>-->
+
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="form-signin">
+      <!--<h2 class="form-signin-heading">Please sign up</h2>-->
+      <label for="surename" class="sr-only">
+        <!--Surename-->
+      </label>
+      <mat-form-field class="example-full-width">
+        <input formControlName="surename"
+               type="text"
+               id="surename"
+               class="form-control"
+               matInput placeholder="Фамилия"
+               required autofocus>
+        <p class="help-block" *ngIf="!signupForm.get('surename').valid && signupForm.get('surename').touched">Пожалуйста
+          введите фамилию.</p>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <label for="name" class="sr-only">
+          <!--Name-->
+        </label>
+        <input formControlName="name"
+               type="text"
+               id="name"
+               class="form-control"
+               matInput placeholder="Имя"
+               required>
+        <p class="help-block" *ngIf="!signupForm.get('name').valid && signupForm.get('name').touched">Пожалуйста введите
+          имя.</p>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <label for="patronymic" class="sr-only">
+          <!--patronymic-->
+        </label>
+        <input formControlName="patronymic"
+               type="text"
+               id="patronymic"
+               class="form-control"
+               matInput placeholder="Отчество"
+               required>
+        <p class="help-block" *ngIf="!signupForm.get('patronymic').valid && signupForm.get('patronymic').touched">
+          Пожалуйста
+          введите отчество.</p>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <label for="email" class="sr-only">
+          <!--Login-->
+        </label>
+        <input formControlName="email"
+               type="email"
+               id="email"
+               class="form-control"
+               matInput placeholder="Почтовый адрес"
+               required autofocus>
+        <p class="help-block" *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">Пожалуйста
+          введите
+          почтовый адрес.</p>
+
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <label for="inputPassword" class="sr-only">
+          <!--Password-->
+        </label>
+        <input formControlName="password"
+               type="password"
+               id="inputPassword"
+               class="form-control"
+               matInput placeholder="Password"
+               required>
+        <p class="help-block" *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched">Please
+          enter
+          password.</p>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input formControlName="confirm"
+               type="password"
+               id="confirmPassword"
+               class="form-control"
+               matInput placeholder="Confirm password"
+               required>
+        <p class="help-block" *ngIf="!signupForm.get('confirm').valid && signupForm.get('confirm').touched">Please
+          confirm
+          password.</p>
+        <p class="alert alert-danger" *ngIf="!passwordsAreSame">AAAA! They aren't same!!!</p>
+
+      </mat-form-field>
+
+
+    </form>
+
+
+    <a routerLink="">Forget password?</a>
+
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      mat-raised-button color="primary"
+      type="submit"
             [disabled]="signupForm.pristine || signupForm.invalid"
             class="btn btn-lg btn-primary btn-block">SignIn
     </button>
-  </form>
-</div>
+
+  </mat-card-actions>
+
+
+</mat-card>
