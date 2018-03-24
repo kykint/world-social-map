@@ -1,39 +1,57 @@
 package com.netcracer.worldsocialmap.database.dao;
 
 import com.netcracer.worldsocialmap.database.domain.User;
-import com.netcracer.worldsocialmap.database.repositories.UserRepository;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
-@Service
+@Repository
+@Transactional
 public class UserDaoImpl implements UserDao {
 
-    private UserRepository userRepository;
-
     @Autowired
-    public UserDaoImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    private SessionFactory sessionFactory;
+
+    private Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
+    @Override
+    public User createUser(String email, String surname, String name, String patronimyc, String birthday, String city, String password) {
+        User user = new User();
+        user.setBirthDate(birthday);
+        user.setCity(city);
+        user.setEmail(email);
+        user.setName(name);
+        user.setPatronimyc(patronimyc);
+        user.setSurName(surname);
+        String salt = BCrypt.gensalt();
+        user.setSalt(salt);
+        user.setPassword(BCrypt.hashpw(password, salt));
+        saveUser(user);
+        return user;
     }
 
     @Override
     public void saveUser(User user) {
-        this.userRepository.save(user);
+        getSession().save(user);
     }
 
     @Override
     public void deleteUser(UUID id) {
-        this.userRepository.deleteById(id);
+        Session session = getSession();
+        session.delete(session.load(User.class, id));
     }
 
     @Override
     public User getUserById(UUID id) {
-        Optional<User> user = this.userRepository.findById(id);
-        return user.orElse(null);
+        return getSession().get(User.class, id);
     }
 
     @Override
@@ -47,17 +65,16 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<User> listUser() {
-        List<User> users = new ArrayList<>();
-        this.userRepository.findAll().forEach(users::add);
-        return users;
+        return getSession().createQuery("from User").list();
     }
 
 
     @Override
     public boolean existUser(UUID id) {
-        return userRepository.existsById(id);
+        return getSession().get(User.class, id) != null;
     }
 
 }

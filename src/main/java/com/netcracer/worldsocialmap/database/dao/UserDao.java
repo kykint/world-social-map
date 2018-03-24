@@ -19,4 +19,6 @@ public interface UserDao {
 
     public boolean existUser(UUID id);
 
+    public User createUser(String email, String surname, String name, String patronimyc, String birthday, String city, String password);
+
 }
