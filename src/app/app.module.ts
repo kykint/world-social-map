@@ -15,6 +15,8 @@ import {MatMenuModule} from '@angular/material/menu';
 
 import {MatCardModule} from '@angular/material/card';
 import {RegCardComponent} from './auth/registration-page/reg-card/reg-card.component';
+import {AuthService} from "./auth/auth.service";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [
   {path: 'registration-page', component: RegistrationPageComponent},
@@ -33,8 +35,6 @@ const appRoutes: Routes = [
   ],
   imports: [
     MatCardModule,
-
-
     BrowserModule,
     MatToolbarModule,
     BrowserAnimationsModule,
@@ -43,13 +43,16 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     MatIconModule,
+    HttpClientModule,
     MatMenuModule,
     RouterModule.forRoot(
       appRoutes,
       {enableTracing: true}),// <-- debugging purposes only
   ],
   providers: [
-    //AuthService, HttpClient, HttpHandler
+    RegistrationPageComponent,
+    AuthService,
+    HttpClient,
   ],
   bootstrap: [AppComponent]
 })
