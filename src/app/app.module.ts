@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {AppComponent} from './app.component';
-//import {appRoutes} from "./routes";
 import {RegistrationPageComponent} from './auth/registration-page/registration-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule, Routes} from "@angular/router";
@@ -12,9 +11,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from "@angular/material";
 import {MatMenuModule} from '@angular/material/menu';
-
 import {MatCardModule} from '@angular/material/card';
-import {RegCardComponent} from './auth/registration-page/reg-card/reg-card.component';
 import {AuthService} from "./auth/auth.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 
@@ -29,9 +26,6 @@ const appRoutes: Routes = [
     AppComponent,
     RegistrationPageComponent,
     TestPageComponent,
-
-    RegCardComponent,
-
   ],
   imports: [
     MatCardModule,
