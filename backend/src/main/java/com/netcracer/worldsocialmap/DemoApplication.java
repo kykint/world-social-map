@@ -1,13 +1,12 @@
 package com.netcracer.worldsocialmap;
 
-import com.netcracer.worldsocialmap.database.dao.UserDaoImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.w3c.dom.UserDataHandler;
+
 
 //@SpringBootApplication
 //public class DemoApplication {
