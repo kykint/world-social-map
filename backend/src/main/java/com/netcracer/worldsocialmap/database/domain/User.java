@@ -1,5 +1,6 @@
 package com.netcracer.worldsocialmap.database.domain;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -33,7 +34,8 @@ public class User {
     @Id
     @Column(name = "user_id")
     @GeneratedValue
-    @Getter @Setter private UUID id;
+    @Getter
+    @Setter private UUID id;
 
     @Column(name = "email")
     @Getter @Setter private String email;
