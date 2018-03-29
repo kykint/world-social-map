@@ -6,7 +6,6 @@ import {AppComponent} from './app.component';
 import {RegistrationPageComponent} from './auth/registration-page/registration-page.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule, Routes} from "@angular/router";
-import {TestPageComponent} from './auth/registratiom-test/test-page/test-page.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from "@angular/material";
@@ -17,7 +16,6 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 const appRoutes: Routes = [
   {path: 'registration-page', component: RegistrationPageComponent},
-  {path: 'test-page', component: TestPageComponent},
 
 ];
 
@@ -25,7 +23,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     RegistrationPageComponent,
-    TestPageComponent,
   ],
   imports: [
     MatCardModule,
