@@ -1,0 +1,57 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Страна, которую я посетил(а) и мои впечатления ...</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="countryForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput
+               [(ngModel)]="visitedCountry.countryName"
+               formControlName="countryName"
+               type="text"
+               placeholder="Название страны"
+               required>
+        <div *ngIf="countryForm.controls['countryName'].errors && !loginForm.controls['countryName'].pristine" class="error-msg">
+          <mat-error [hidden]="!countryForm.controls['countryName'].required">country name is required.</mat-error>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput
+                  [(ngModel)]="visitedCountry.visitedCities"
+                  formControlName="visitedCities"
+                  type="text"
+                  placeholder="Посещенные города" required></textarea>
+        <div *ngIf="countryForm.controls['visitedCities'].errors && !loginForm.controls['visitedCities'].pristine" class="error-msg">
+          <mat-error [hidden]="!countryForm.controls['visitedCities'].required">visited cities are required.</mat-error>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput
+                  [(ngModel)]="visitedCountry.descripion"
+                  formControlName="descripion"
+                  type="text"
+                  placeholder="Ваш отзыв о стране"></textarea>
+        <div *ngIf="countryForm.controls['descripion'].errors && !loginForm.controls['descripion'].pristine" class="error-msg">
+          <mat-error [hidden]="!countryForm.controls['descripion'].required">descripion is required.</mat-error>
+        </div>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput
+               [(ngModel)]="visitedCountry.assessment"
+               formControlName="assessment"
+               type="number"
+               placeholder="Ваша оценка страны" required>
+        <div *ngIf="countryForm.controls['assessment'].errors && !loginForm.controls['assessment'].pristine" class="error-msg">
+          <mat-error [hidden]="!countryForm.controls['assessment'].required">assessment is required.</mat-error>
+        </div>
+      </mat-form-field>
+      <button mat-button
+              type="submit"
+              [disabled]="countryForm.pristine || countryForm.invalid"
+              class="mat-raised mat-primary">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>

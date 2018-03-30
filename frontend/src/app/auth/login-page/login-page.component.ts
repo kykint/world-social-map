@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Subscription} from "rxjs/Subscription";
 import {AuthService} from "../auth.service";
@@ -12,12 +12,11 @@ import {LoginRequest} from "../models/login-request";
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.less']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   isAuthorized = false;
 
   constructor(private fb: FormBuilder, private loginService: AuthService, private router: Router) { }
-
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -42,6 +41,6 @@ export class LoginPageComponent implements OnInit {
     );
   }
 
-
+  ngOnDestroy(){}
 
 }

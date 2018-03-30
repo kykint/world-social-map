@@ -33,6 +33,8 @@ export class RegistrationPageComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(){}
+
   onSubmit() {
     if (this.signupForm.value.password === this.signupForm.value.confirm) {
       this.passwordsAreSame = true;

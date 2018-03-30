@@ -1,0 +1,3 @@
+<button mat-raised-button color="primary" (click)="navigateToTheForm()">Add</button>
+<app-visited-country *ngFor="let visitedCountry of visitedCountries"
+                      [visitedCountry]="visitedCountry"></app-visited-country>

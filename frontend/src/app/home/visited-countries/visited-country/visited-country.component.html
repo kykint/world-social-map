@@ -1,0 +1,20 @@
+<mat-expansion-panel (opened)="panelOpenState = true"
+                     (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{ visitedCountry.countryName }}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <mat-panel-description>
+    <mat-list>
+      <mat-list-item *ngFor="let visitedCity of visitedCountry.visitedCities">
+        <span mat-line>{{ visitedCity }}</span>
+      </mat-list-item>
+    </mat-list>
+    <div>{{ visitedCountry.descripion }}</div>
+    <div>{{ visitedCountry.assessment }}</div>
+    <mat-action-row>
+      <button mat-mini-fab color="primary" (click)="navigateToEditForm(visitedCountry)"></button>
+    </mat-action-row>
+  </mat-panel-description>
+</mat-expansion-panel>
