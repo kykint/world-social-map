@@ -18,7 +18,7 @@ public class UserController {
     UserDaoImpl userDao;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<User> getAirport() {
+    public ResponseEntity<User> getUser() {
         return new ResponseEntity<>(userDao.getUserByEmail("hhd"), HttpStatus.OK);
     }
 }
