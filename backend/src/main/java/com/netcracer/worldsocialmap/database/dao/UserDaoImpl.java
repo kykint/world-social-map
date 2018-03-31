@@ -13,11 +13,14 @@ import java.util.UUID;
 @Service
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
+
     private UserRepository userRepository;
 
-    public UserDaoImpl() {
+    @Autowired
+    public UserDaoImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
+
 
 //    public UserDaoImpl(UserRepository userRepository) {
 //        this.userRepository = userRepository;
