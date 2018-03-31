@@ -3,7 +3,6 @@ package com.netcracer.worldsocialmap.database.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,47 +16,53 @@ import java.util.UUID;
 public class User {
 
     public User() {
-        this.salt = BCrypt.gensalt();
     }
 
-//    public User(String email, String password, String surName, String name, String patronimyc, String birthDate, String city) {
-//        this.email = email;
-//        this.surName = surName;
-//        this.name = name;
-//        this.patronimyc = patronimyc;
-//        this.birthDate = birthDate;
-//        this.city = city;
-//        this.salt = BCrypt.gensalt();
-//        this.password = BCrypt.hashpw(password, this.salt);
-//    }
 
     @Id
     @Column(name = "user_id")
     @GeneratedValue
     @Getter
-    @Setter private UUID id;
+    @Setter
+    private UUID id;
 
     @Column(name = "email")
-    @Getter @Setter private String email;
+    @Getter
+    @Setter
+    private String email;
 
     @Column(name = "password")
-    @Getter @Setter private String password;
+    @Getter
+    @Setter
+    private String password;
 
     @Column(name = "surname")
-    @Getter @Setter private String surName;
+    @Getter
+    @Setter
+    private String surName;
 
     @Column(name = "name")
-    @Getter @Setter private String name;
+    @Getter
+    @Setter
+    private String name;
 
     @Column(name = "patronimyc")
-    @Getter @Setter private String patronimyc;
+    @Getter
+    @Setter
+    private String patronimyc;
 
     @Column(name = "birthdate")
-    @Getter @Setter private String birthDate;
+    @Getter
+    @Setter
+    private String birthDate;
 
     @Column(name = "city")
-    @Getter @Setter private String city;
+    @Getter
+    @Setter
+    private String city;
 
     @Column(name = "salt")
-    @Getter @Setter private String salt;
+    @Getter
+    @Setter
+    private String salt;
 }

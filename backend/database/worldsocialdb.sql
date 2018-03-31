@@ -84,7 +84,6 @@ ALTER TABLE usr OWNER TO postgres;
 --
 
 COPY usr (user_id, email, surname, name, patronimyc, birthdate, city, password, salt) FROM stdin;
-\.
 
 
 --
