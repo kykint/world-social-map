@@ -22,10 +22,6 @@ public class UserDaoImpl implements UserDao {
     }
 
 
-//    public UserDaoImpl(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
-
     @Override
     public void saveUser(User user) {
         this.userRepository.save(user);
