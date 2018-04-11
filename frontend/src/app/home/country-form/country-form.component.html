@@ -8,12 +8,18 @@
         <input matInput
                [(ngModel)]="visitedCountry.countryName"
                formControlName="countryName"
+               [matAutocomplete]="auto"
                type="text"
                placeholder="Название страны"
                required>
         <div *ngIf="countryForm.controls['countryName'].errors && !loginForm.controls['countryName'].pristine" class="error-msg">
           <mat-error [hidden]="!countryForm.controls['countryName'].required">country name is required.</mat-error>
         </div>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let country of visitedCountry | async" [value]="country">
+            <span>{{ country }}</span> |
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
@@ -32,7 +38,10 @@
                   [(ngModel)]="visitedCountry.descripion"
                   formControlName="descripion"
                   type="text"
-                  placeholder="Ваш отзыв о стране"></textarea>
+                  placeholder="Ваш отзыв о стране"
+                  matTextareaAutosize
+                  matAutosizeMinRows="2"
+                  matAutosizeMaxRows="7"></textarea>
         <div *ngIf="countryForm.controls['descripion'].errors && !loginForm.controls['descripion'].pristine" class="error-msg">
           <mat-error [hidden]="!countryForm.controls['descripion'].required">descripion is required.</mat-error>
         </div>

@@ -1,13 +1,16 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {BackendService} from "../backend/backend.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {VisitedCountryOptions} from "../models/visited-country-options";
-import {VisitedCountryDto} from "../dtos/visited-country-dto";
-import {urls} from "../../urls";
-import {CrudOperationDtoInterface} from "../dtos/crud-operation-dto.interface";
-import {AutoUnsubscribe} from "ngx-auto-unsubscribe";
-import {VisitedCountryService} from "../services/visited-country/visited-country.service";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {BackendService} from '../backend/backend.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {VisitedCountryDto} from '../dtos/visited-country-dto';
+import {urls} from '../../urls';
+import {CrudOperationDtoInterface} from '../dtos/crud-operation-dto.interface';
+import {AutoUnsubscribe} from 'ngx-auto-unsubscribe';
+import {VisitedCountryService} from '../services/visited-country/visited-country.service';
+import {COUNTRIES} from '../constants/countries';
+import {Observable} from 'rxjs/Observable';
+import {startWith} from 'rxjs/operators/startWith';
+import {map} from 'rxjs/operators/map';
 
 @AutoUnsubscribe()
 @Component({
@@ -21,9 +24,12 @@ export class CountryFormComponent implements OnInit, OnDestroy {
   visitedCountry: VisitedCountryDto;
 
   countryForm: FormGroup;
+  filteredCountries: Observable<string[]>;
   response: string;
 
-  constructor(private fb: FormBuilder, private backendService: BackendService, private router: Router, private visitedCountryService: VisitedCountryService) { }
+  constructor(private fb: FormBuilder,
+              private backendService: BackendService, private router: Router,
+              private visitedCountryService: VisitedCountryService) { }
 
   ngOnInit() {
     this.countryForm = this.fb.group({
@@ -34,7 +40,7 @@ export class CountryFormComponent implements OnInit, OnDestroy {
     });
 
     this.visitedCountryService.visitedCountryAnnounced$.subscribe((visitedCountry: VisitedCountryDto) => {
-      if(visitedCountry !== null) {
+      if (visitedCountry !== null) {
         this.visitedCountry = visitedCountry;
         this.countryForm.setValue({
           'countryName': this.visitedCountry.countryName,
@@ -44,14 +50,20 @@ export class CountryFormComponent implements OnInit, OnDestroy {
         });
       }
     });
+
+    this.filteredCountries = this.countryForm.controls['countryName'].valueChanges
+      .pipe(
+        startWith(''),
+        map(country => country ? this.filterCountries(country) : [])
+      );
   }
 
   ngOnDestroy(){}
 
-  onSubmit(){
+  onSubmit() {
     const {countryName, visitedCities, descripion, assessment} = this.countryForm.value;
     const visitedCountry = new VisitedCountryDto(countryName, visitedCities, descripion, assessment);
-    if(this.visitedCountry){
+    if (this.visitedCountry) {
       this.backendService.post(urls.updateVisitedCountryURL, this.visitedCountry)
         .subscribe((crudOperationDto: CrudOperationDtoInterface) => {
           this.response = crudOperationDto.response;
@@ -64,6 +76,12 @@ export class CountryFormComponent implements OnInit, OnDestroy {
           this.router.navigate(['visited-countries']);
         });
     }
+  }
+
+  filterCountries(name: String): string[] {
+    return COUNTRIES
+      .filter(country => country.name.toLowerCase().indexOf(name.toLowerCase()) === 0)
+      .map(country => country.name);
   }
 
 }
