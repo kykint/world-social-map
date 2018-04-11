@@ -1,0 +1,47 @@
+
+<div layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
+  <mat-card flex="flex" flex-gt-sm="50" flex-gt-md="33" >
+    <mat-card-title>
+      <mat-toolbar color="primary">
+          <h2><span>Login Form</span></h2>
+      </mat-toolbar>
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form">
+        <mat-form-field class="example-full-width">
+          <label for="username">Login</label>
+          <input matInput
+                 formControlName="username"
+                 type="text"
+                 id="username"
+                 class="form-control"
+                 required autofocus/>
+          <div *ngIf="loginForm.controls['username'].errors && !loginForm.controls['username'].pristine" class="error-msg">
+            <mat-error [hidden]="!loginForm.controls['username'].errors.required">Email is required.</mat-error>
+            <mat-error [hidden]="!loginForm.controls['username'].errors.email">Email is invalid.</mat-error>
+          </div>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <label for="inputPassword">Password</label>
+          <input matInput
+                 formControlName="password"
+                 type="password"
+                 id="inputPassword"
+                 class="form-control"
+                 required/>
+          <div *ngIf="loginForm.controls['password'].errors && !loginForm.controls['password'].pristine" class="error-msg">
+            <mat-error [hidden]="!loginForm.controls['password'].errors.required">Password is required.</mat-error>
+            <mat-error [hidden]="!loginForm.controls['password'].errors.minLength">Password should be longer</mat-error>
+          </div>
+        </mat-form-field>
+        <button mat-button
+                type="submit"
+                [disabled]="loginForm.pristine || loginForm.invalid || isAuthorized"
+                class="mat-raised mat-primary">Login</button>
+        <a href="#" routerLink="/registration-page">Do not have an account?</a>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+<!-- Angular Material Dependencies-->
+
