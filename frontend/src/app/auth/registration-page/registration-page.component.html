@@ -1,4 +1,6 @@
 
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="form-signin">
+
 <mat-card class="example-card">
   <mat-card-header>
 
@@ -13,7 +15,7 @@
   <mat-card-content>
 
 
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="form-signin">
+
 
       <label for="surename" class="sr-only">
 
@@ -110,7 +112,7 @@
         <p class="alert alert-danger" *ngIf="!passwordsAreSame">AAAA! They aren't same!!!</p>
 
       </mat-form-field>
-    </form>
+
 
 
     <a routerLink="">Forget password?</a>
@@ -129,3 +131,5 @@
 
 
 </mat-card>
+
+</form>
