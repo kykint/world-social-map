@@ -26,6 +26,8 @@ export class VisitedCountriesComponent implements OnInit {
       .subscribe((visitedCountries: VisitedCountryDto[]) => {
         this.visitedCountries = visitedCountries;
       });
+
+
   }
 
   ngOnDestroy() {}

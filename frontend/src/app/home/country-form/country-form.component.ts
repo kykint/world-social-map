@@ -8,6 +8,10 @@ import {urls} from "../../urls";
 import {CrudOperationDtoInterface} from "../dtos/crud-operation-dto.interface";
 import {AutoUnsubscribe} from "ngx-auto-unsubscribe";
 import {VisitedCountryService} from "../services/visited-country/visited-country.service";
+import {Observable} from 'rxjs/Observable';
+import {startWith} from 'rxjs/operators/startWith';
+import {map} from 'rxjs/operators/map';
+import {COUNTRIES} from '../constants/countries';
 
 @AutoUnsubscribe()
 @Component({
@@ -19,7 +23,7 @@ export class CountryFormComponent implements OnInit, OnDestroy {
 
   // @Input() options: VisitedCountryOptions;
   visitedCountry: VisitedCountryDto;
-
+  filteredCountries: Observable<string[]>;
   countryForm: FormGroup;
   response: string;
 
@@ -44,6 +48,12 @@ export class CountryFormComponent implements OnInit, OnDestroy {
         });
       }
     });
+
+    this.filteredCountries = this.countryForm.controls['countryName'].valueChanges
+      .pipe(
+        startWith(''),
+        map(country => country ? this.filterCountries(country) : [])
+      );
   }
 
   ngOnDestroy(){}
@@ -64,6 +74,12 @@ export class CountryFormComponent implements OnInit, OnDestroy {
           this.router.navigate(['country-list']);
         });
     }
+  }
+
+  filterCountries(name: String): string[] {
+    return COUNTRIES
+      .filter(country => country.name.toLowerCase().indexOf(name.toLowerCase()) === 0)
+      .map(country => country.name);
   }
 
 }

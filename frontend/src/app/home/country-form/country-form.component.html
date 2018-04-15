@@ -7,13 +7,19 @@
       <mat-form-field class="example-full-width">
         <input matInput
                [(ngModel)]="visitedCountry.countryName"
+               [matAutocomplete]="auto"
                formControlName="countryName"
                type="text"
                placeholder="Название страны"
                required>
-        <div *ngIf="countryForm.controls['countryName'].errors && !loginForm.controls['countryName'].pristine" class="error-msg">
+        <div *ngIf="countryForm.controls['countryName'].errors && !countryForm.controls['countryName'].pristine" class="error-msg">
           <mat-error [hidden]="!countryForm.controls['countryName'].required">country name is required.</mat-error>
         </div>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+            <span>{{ country }}</span> |
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
@@ -22,7 +28,7 @@
                   formControlName="visitedCities"
                   type="text"
                   placeholder="Посещенные города" required></textarea>
-        <div *ngIf="countryForm.controls['visitedCities'].errors && !loginForm.controls['visitedCities'].pristine" class="error-msg">
+        <div *ngIf="countryForm.controls['visitedCities'].errors && !countryForm.controls['visitedCities'].pristine" class="error-msg">
           <mat-error [hidden]="!countryForm.controls['visitedCities'].required">visited cities are required.</mat-error>
         </div>
       </mat-form-field>
@@ -32,8 +38,11 @@
                   [(ngModel)]="visitedCountry.descripion"
                   formControlName="descripion"
                   type="text"
-                  placeholder="Ваш отзыв о стране"></textarea>
-        <div *ngIf="countryForm.controls['descripion'].errors && !loginForm.controls['descripion'].pristine" class="error-msg">
+                  placeholder="Ваш отзыв о стране"
+                  matTextareaAutosize
+                  matAutosizeMinRows="2"
+                  matAutosizeMaxRows="7"></textarea>
+        <div *ngIf="countryForm.controls['descripion'].errors && !countryForm.controls['descripion'].pristine" class="error-msg">
           <mat-error [hidden]="!countryForm.controls['descripion'].required">descripion is required.</mat-error>
         </div>
       </mat-form-field>
@@ -43,8 +52,9 @@
                [(ngModel)]="visitedCountry.assessment"
                formControlName="assessment"
                type="number"
-               placeholder="Ваша оценка страны" required>
-        <div *ngIf="countryForm.controls['assessment'].errors && !loginForm.controls['assessment'].pristine" class="error-msg">
+               placeholder="Ваша оценка страны"
+               required>
+        <div *ngIf="countryForm.controls['assessment'].errors && !countryForm.controls['assessment'].pristine" class="error-msg">
           <mat-error [hidden]="!countryForm.controls['assessment'].required">assessment is required.</mat-error>
         </div>
       </mat-form-field>

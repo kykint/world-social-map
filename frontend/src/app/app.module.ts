@@ -12,17 +12,20 @@ import {RouterModule} from "@angular/router";
 import {appRoutes} from "./routes";
 import { LoginPageComponent } from './auth/login-page/login-page.component';
 import {
-  MatButtonToggleModule, MatExpansionModule, MatIconModule, MatListModule,
+  MatAutocompleteModule,
+  MatButtonToggleModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatListModule,
   MatToolbarModule
 } from "@angular/material";
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DateValueAccessorModule} from "angular-date-value-accessor";
-import { CountryFormComponent } from './home/country-form/country-form.component';
+import {CountryFormComponent} from './home/country-form/country-form.component';
 import {VisitedCountriesComponent} from "./home/country-list/country-list.component";
-import { CountryComponent } from './home/country-list/country/country.component';
-import {VisitedCountryService} from "./home/services/visited-country/visited-country.service";
-import { DropdownMenuComponent } from './home/country-form/dropdown-menu/dropdown-menu.component';
+import {CountryComponent} from './home/country-list/country/country.component';
+import {VisitedCountryService} from './home/services/visited-country/visited-country.service';
 
 @NgModule({
   declarations: [
@@ -31,10 +34,8 @@ import { DropdownMenuComponent } from './home/country-form/dropdown-menu/dropdow
     LoginPageComponent,
     HomeComponent,
     CountryFormComponent,
-    DropdownMenuComponent,
     VisitedCountriesComponent,
-    CountryComponent,
-    DropdownMenuComponent
+    CountryComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +44,7 @@ import { DropdownMenuComponent } from './home/country-form/dropdown-menu/dropdow
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
+    MatAutocompleteModule,
     MatExpansionModule,
     MatListModule,
     MatIconModule,
