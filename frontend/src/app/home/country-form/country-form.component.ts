@@ -55,13 +55,13 @@ export class CountryFormComponent implements OnInit, OnDestroy {
       this.backendService.post(urls.updateVisitedCountryURL, this.visitedCountry)
         .subscribe((crudOperationDto: CrudOperationDtoInterface) => {
           this.response = crudOperationDto.response;
-          this.router.navigate(['visited-countries']);
+          this.router.navigate(['country-list']);
         });
     } else {
       this.backendService.post(urls.addVisitedCountryURL, this.visitedCountry)
         .subscribe((crudOperationDto: CrudOperationDtoInterface) => {
           this.response = crudOperationDto.response;
-          this.router.navigate(['visited-countries']);
+          this.router.navigate(['country-list']);
         });
     }
   }

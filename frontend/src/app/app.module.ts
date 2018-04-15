@@ -11,14 +11,18 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./routes";
 import { LoginPageComponent } from './auth/login-page/login-page.component';
-import {MatButtonToggleModule, MatExpansionModule, MatListModule, MatToolbarModule} from "@angular/material";
+import {
+  MatButtonToggleModule, MatExpansionModule, MatIconModule, MatListModule,
+  MatToolbarModule
+} from "@angular/material";
 import { HomeComponent } from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DateValueAccessorModule} from "angular-date-value-accessor";
 import { CountryFormComponent } from './home/country-form/country-form.component';
-import {VisitedCountriesComponent} from "./home/visited-countries/visited-countries.component";
-import { VisitedCountryComponent } from './home/visited-countries/visited-country/visited-country.component';
+import {VisitedCountriesComponent} from "./home/country-list/country-list.component";
+import { CountryComponent } from './home/country-list/country/country.component';
 import {VisitedCountryService} from "./home/services/visited-country/visited-country.service";
+import { DropdownMenuComponent } from './home/country-form/dropdown-menu/dropdown-menu.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +31,10 @@ import {VisitedCountryService} from "./home/services/visited-country/visited-cou
     LoginPageComponent,
     HomeComponent,
     CountryFormComponent,
+    DropdownMenuComponent,
     VisitedCountriesComponent,
-    VisitedCountryComponent
+    CountryComponent,
+    DropdownMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +45,7 @@ import {VisitedCountryService} from "./home/services/visited-country/visited-cou
     MatToolbarModule,
     MatExpansionModule,
     MatListModule,
+    MatIconModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
