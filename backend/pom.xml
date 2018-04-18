@@ -12,6 +12,8 @@
         <hibernate-version>5.0.1.Final</hibernate-version>
         <java.version>1.8</java.version>
         <start-class>com.netcracer.worldsocialmap.DemoApplication</start-class>
+        <jjwt.version>0.9.0</jjwt.version>
+        <findbugs.version>3.0.1</findbugs.version>
     </properties>
 
     <parent>
@@ -35,6 +37,13 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>findbugs</artifactId>
+            <version>${findbugs.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
@@ -46,6 +55,13 @@
             <artifactId>postgresql</artifactId>
             <version>42.1.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
