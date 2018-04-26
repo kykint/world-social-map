@@ -10,7 +10,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./routes";
-import { LoginPageComponent } from './auth/login-page/login-page.component';
+import {LoginPageComponent} from './auth/login-page/login-page.component';
 import {
   MatAutocompleteModule,
   MatButtonToggleModule,
@@ -22,10 +22,13 @@ import {
 import {HomeComponent} from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DateValueAccessorModule} from "angular-date-value-accessor";
-import {CountryFormComponent} from './home/country-form/country-form.component';
+import { CountryFormComponent } from './home/country-form/country-form.component';
 import {VisitedCountriesComponent} from "./home/country-list/country-list.component";
-import {CountryComponent} from './home/country-list/country/country.component';
+import { CountryComponent } from './home/country-list/country/country.component';
 import {VisitedCountryService} from './home/services/visited-country/visited-country.service';
+
+import {CommentsComponent} from './home/comments/comments.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import {VisitedCountryService} from './home/services/visited-country/visited-cou
     HomeComponent,
     CountryFormComponent,
     VisitedCountriesComponent,
+    CommentsComponent,
     CountryComponent
   ],
   imports: [

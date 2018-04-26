@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Subscription} from "rxjs/Subscription";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
 import {AutoUnsubscribe} from "ngx-auto-unsubscribe";
@@ -10,7 +9,7 @@ import {LoginRequest} from "../models/login-request";
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.less']
+  styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
