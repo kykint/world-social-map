@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {BackendService} from "../backend/backend.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {VisitedCountryOptions} from "../models/visited-country-options";
 import {VisitedCountryDto} from "../dtos/visited-country-dto";
@@ -30,11 +30,12 @@ export class CountryFormComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder, private backendService: BackendService, private router: Router, private visitedCountryService: VisitedCountryService) { }
 
   ngOnInit() {
+    const assessment = new FormControl('', [Validators.required, Validators.min(1), Validators.max(5)]);
     this.countryForm = this.fb.group({
       'countryName': ['', Validators.required],
       'visitedCities': ['', Validators.required],
       'descripion': ['', Validators.required],
-      'assessment': ['', Validators.required, Validators.min(1), Validators.max(5)]
+      'assessment': assessment
     });
 
     this.visitedCountryService.visitedCountryAnnounced$.subscribe((visitedCountry: VisitedCountryDto) => {

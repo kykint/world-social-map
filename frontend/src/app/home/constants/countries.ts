@@ -1,4 +1,4 @@
-import {CountryModelInterface} from '../models/country-model.interface';
+import {CountryModelInterface} from '../models/country.model';
 
 export const COUNTRIES: CountryModelInterface[] = [
   {'name': 'Afghanistan', 'code': 'AF'},
