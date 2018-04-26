@@ -5,14 +5,12 @@ import {urls} from "../../urls";
 import {Router} from "@angular/router";
 import {VisitedCountryService} from "../services/visited-country/visited-country.service";
 import {AutoUnsubscribe} from "ngx-auto-unsubscribe";
-import {DomSanitizer} from "@angular/platform-browser";
-import {MatIconRegistry} from "@angular/material";
 
 @AutoUnsubscribe()
 @Component({
   selector: 'app-visited-countries',
   templateUrl: './country-list.component.html',
-  styleUrls: ['./country-list.component.css']
+  styleUrls: ['./country-list.component.scss']
 })
 export class VisitedCountriesComponent implements OnInit {
 

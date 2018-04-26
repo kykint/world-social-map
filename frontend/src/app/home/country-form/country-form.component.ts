@@ -1,8 +1,7 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BackendService} from "../backend/backend.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {VisitedCountryOptions} from "../models/visited-country-options";
+import {Router} from "@angular/router";
 import {VisitedCountryDto} from "../dtos/visited-country-dto";
 import {urls} from "../../urls";
 import {CrudOperationDtoInterface} from "../dtos/crud-operation-dto.interface";
@@ -17,7 +16,7 @@ import {COUNTRIES} from '../constants/countries';
 @Component({
   selector: 'app-country-form',
   templateUrl: './country-form.component.html',
-  styleUrls: ['./country-form.component.css']
+  styleUrls: ['./country-form.component.scss']
 })
 export class CountryFormComponent implements OnInit, OnDestroy {
 
