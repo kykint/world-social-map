@@ -11,14 +11,21 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "./routes";
 import { LoginPageComponent } from './auth/login-page/login-page.component';
-import {MatButtonToggleModule, MatExpansionModule, MatListModule, MatToolbarModule} from "@angular/material";
-import { HomeComponent } from './home/home.component';
+import {
+  MatAutocompleteModule,
+  MatButtonToggleModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatListModule,
+  MatToolbarModule
+} from "@angular/material";
+import {HomeComponent} from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DateValueAccessorModule} from "angular-date-value-accessor";
-import { CountryFormComponent } from './home/country-form/country-form.component';
-import {VisitedCountriesComponent} from "./home/visited-countries/visited-countries.component";
-import { VisitedCountryComponent } from './home/visited-countries/visited-country/visited-country.component';
-import {VisitedCountryService} from "./home/services/visited-country/visited-country.service";
+import {CountryFormComponent} from './home/country-form/country-form.component';
+import {VisitedCountriesComponent} from "./home/country-list/country-list.component";
+import {CountryComponent} from './home/country-list/country/country.component';
+import {VisitedCountryService} from './home/services/visited-country/visited-country.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +35,7 @@ import {VisitedCountryService} from "./home/services/visited-country/visited-cou
     HomeComponent,
     CountryFormComponent,
     VisitedCountriesComponent,
-    VisitedCountryComponent
+    CountryComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +44,10 @@ import {VisitedCountryService} from "./home/services/visited-country/visited-cou
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
+    MatAutocompleteModule,
     MatExpansionModule,
     MatListModule,
+    MatIconModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
