@@ -29,7 +29,8 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     const loginRequest = new LoginRequest(username, password);
     this.loginService.signIn(loginRequest).subscribe(
       res => {
-        if (res.ok) {
+        console.log(res);
+        if (res.token) {
           localStorage.setItem('token', res.token);
           this.isAuthorized = true;
           this.router.navigate(['home']);

@@ -9,15 +9,36 @@
   <mat-card-content>
 
     <mat-form-field>
-             <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
-                       matAutosizeMaxRows="50" [(ngModel)]="textcomment"
-                       placeholder=" Leave a comment here!"></textarea>
+              <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
+                        matAutosizeMaxRows="50"
+                        [(ngModel)]="comment.username"
+                        placeholder="Username"></textarea>
+    </mat-form-field>
+    <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
+              matAutosizeMaxRows="50"
+              [(ngModel)]="comment.time"
+              placeholder="Time"></textarea>
+
+    <mat-form-field>
+              <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
+                        matAutosizeMaxRows="50"
+                        [(ngModel)]="comment.country"
+                        placeholder="Country"></textarea>
+
+    </mat-form-field>
+    <mat-form-field>
+    <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
+              matAutosizeMaxRows="50"
+              [(ngModel)]="comment.textcomment"
+              placeholder="Leave a comment here!"></textarea>
+
     </mat-form-field>
 
   </mat-card-content>
   <mat-card-actions class="actions">
 
-    <button mat-button>SHARE</button>
+    <button mat-button (click)="submit(user)">SHARE</button>
+
   </mat-card-actions>
 </mat-card>
 

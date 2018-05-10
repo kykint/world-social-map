@@ -12,22 +12,21 @@ import {RouterModule} from "@angular/router";
 import {appRoutes} from "./routes";
 import {LoginPageComponent} from './auth/login-page/login-page.component';
 import {
-  MatAutocompleteModule,
-  MatButtonToggleModule,
-  MatExpansionModule,
-  MatIconModule,
-  MatListModule,
+  MatAutocompleteModule, MatButtonToggleModule, MatExpansionModule, MatIconModule, MatListModule,
   MatToolbarModule
 } from "@angular/material";
 import {HomeComponent} from './home/home.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DateValueAccessorModule} from "angular-date-value-accessor";
-import { CountryFormComponent } from './home/country-form/country-form.component';
+import {CountryFormComponent} from './home/country-form/country-form.component';
 import {VisitedCountriesComponent} from "./home/country-list/country-list.component";
-import { CountryComponent } from './home/country-list/country/country.component';
+import {CountryComponent} from './home/country-list/country/country.component';
 import {VisitedCountryService} from './home/services/visited-country/visited-country.service';
 
 import {CommentsComponent} from './home/comments/comments.component';
+import {CommentsService} from "./home/comments/comments.service";
+import {AuthGuard} from "./auth/auth.guard";
+import {BackendService} from "./home/backend/backend.service";
 
 
 @NgModule({
@@ -55,12 +54,14 @@ import {CommentsComponent} from './home/comments/comments.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     FormsModule,
+
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
     DateValueAccessorModule
   ],
-  providers: [AuthService, HttpClient, VisitedCountryService],
+  providers: [AuthService, HttpClient, VisitedCountryService, CommentsService, AuthGuard, BackendService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
