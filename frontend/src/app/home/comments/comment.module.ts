@@ -1,8 +1,7 @@
 export class CommentModule {
   username: string;
   textcomment: string;
-
-  constructor() {
-  }
+  country: string;
+  time: string;
 
 }
