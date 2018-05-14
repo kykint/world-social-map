@@ -1,6 +1,6 @@
-export class CommentModule {
+export class CommentModel {
   username: string;
-  textcomment: string;
+  textForComment: string;
   country: string;
   time: string;
 

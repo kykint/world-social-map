@@ -34,4 +34,15 @@ export class AuthService {
     localStorage.clear();
     return this.post(urls.logoutURL, token);
   }
+
+  getUser() {
+
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type':  'application/json',
+    //     'Authorization': 'my-auth-token'
+    //   })
+
+    return this.http.get('http://localhost:8080/user')
+  }
 }

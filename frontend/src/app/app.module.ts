@@ -23,10 +23,13 @@ import {VisitedCountriesComponent} from "./home/country-list/country-list.compon
 import {CountryComponent} from './home/country-list/country/country.component';
 import {VisitedCountryService} from './home/services/visited-country/visited-country.service';
 
-import {CommentsComponent} from './home/comments/comments.component';
-import {CommentsService} from "./home/comments/comments.service";
+
+import {CommentsService} from "./home/comment-list/comments.service";
 import {AuthGuard} from "./auth/auth.guard";
 import {BackendService} from "./home/backend/backend.service";
+import {UserService} from "./home/services/user-service/user.service";
+import {CommentComponent} from './home/comment/comment.component';
+import {CommentListComponent} from './home/comment-list/comment-list.component';
 
 
 @NgModule({
@@ -37,8 +40,9 @@ import {BackendService} from "./home/backend/backend.service";
     HomeComponent,
     CountryFormComponent,
     VisitedCountriesComponent,
-    CommentsComponent,
-    CountryComponent
+    CountryComponent,
+    CommentComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,7 @@ import {BackendService} from "./home/backend/backend.service";
     HttpClientModule,
     DateValueAccessorModule
   ],
-  providers: [AuthService, HttpClient, VisitedCountryService, CommentsService, AuthGuard, BackendService],
+  providers: [AuthService, HttpClient, VisitedCountryService, CommentsService, AuthGuard, BackendService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

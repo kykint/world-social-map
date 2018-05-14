@@ -1,0 +1,8 @@
+<h1>TEST HERE</h1>
+<app-comment [comment]="comment">
+
+</app-comment>
+
+<div *ngFor="let commentToShow of commentsMock">
+  <app-comment [comment]="commentToShow"></app-comment>
+</div>
