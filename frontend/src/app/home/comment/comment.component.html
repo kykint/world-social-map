@@ -7,18 +7,19 @@
   <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
   <mat-card-content>
 
-    <div class="input" ng-show="isInput">
+    <div class="comment__input" *ngIf="isInput">
       <mat-form-field>
               <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
                         matAutosizeMaxRows="50"
                         [(ngModel)]="comment.username"
                         placeholder="Username"></textarea>
       </mat-form-field>
+      <mat-form-field>
       <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
                 matAutosizeMaxRows="50"
                 [(ngModel)]="comment.time"
                 placeholder="Time"></textarea>
-
+      </mat-form-field>
       <mat-form-field>
               <textarea matInput matTextareaAutosize matAutosizeMinRows="2"
                         matAutosizeMaxRows="50"
@@ -35,9 +36,9 @@
       </mat-form-field>
     </div>
 
-    <p>{{comment.textForComment}}</p>
+    <p *ngIf="!isInput">{{comment.textForComment}}</p>
   </mat-card-content>
-  <mat-card-actions class="actions">
+  <mat-card-actions class="comment__button">
 
     <button mat-button (click)="submit(user)">SHARE</button>
 

@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {CommentsService} from "../comment-list/comments.service";
-import {CommentModel} from "./comment.module";
+import {CommentModule} from "./comment.module";
 
 
 @Component({
@@ -9,20 +9,20 @@ import {CommentModel} from "./comment.module";
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent {
-  @Input() comment: CommentModel;
-  isInput: boolean;
+  @Input() comment: CommentModule;
+  @Input() isInput: boolean;
 
-  receivedComment: CommentModel;
+  receivedComment: CommentModule;
   done: boolean;
 
   constructor(private commentsService: CommentsService) {
 
   }
 
-  submit(comment: CommentModel) {
+  submit(comment: CommentModule) {
     this.commentsService.postData(this.comment)
       .subscribe(
-        (data: CommentModel) => {
+        (data: CommentModule) => {
           this.receivedComment = data;
           this.done = true;
         },

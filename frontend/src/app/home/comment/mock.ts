@@ -1,7 +1,7 @@
-import {CommentModel} from "./comment.module";
+import {CommentModule} from "./comment.module";
 
 
-export const COMMENTS: CommentModel [] = [
+export const COMMENTS: CommentModule [] = [
 
   {
     username: 'Bond',

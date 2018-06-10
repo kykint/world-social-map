@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {CommentModel} from "../comment/comment.module";
+import {CommentModule} from "../comment/comment.module";
 
 @Injectable()
 export class CommentsService {
@@ -14,7 +14,7 @@ export class CommentsService {
     return this.http.get(this.configUrl);
   }
 
-  postData(comment: CommentModel) {
+  postData(comment: CommentModule) {
 
     const body = {
       username: comment.username,
@@ -25,7 +25,7 @@ export class CommentsService {
     return this.http.post('http://localhost:8080/comment', body);
   }
 
-  testPost(comment: CommentModel) {
+  testPost(comment: CommentModule) {
     const body = {
       username: "User",
       textForComment: "Text",
