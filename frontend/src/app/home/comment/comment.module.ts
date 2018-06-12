@@ -1,4 +1,4 @@
-export class CommentModule {
+export class CommentModel {
   username: string;
   textForComment: string;
   country: string;

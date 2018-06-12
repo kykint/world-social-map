@@ -1,20 +1,42 @@
-.comment__button {
-  color: red;
-}
-mat-card {
-  max-width: 300px;
-  margin-left: 200px;
-
-}
-
+$defbackround: blueviolet;
 h1 {
   color: #b2ff59;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+mat-card {
+  max-width: 300px;
+  margin-left: 200px;
+  margin-bottom: 30px;
+  mat-card-header div.image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  mat-card-content {
+    width: 310px;
+
+  }
+  p.comment__textview {
+    border-left: solid thick brown;
+    background: $defbackround;
+    color: black;
+    text-indent: 20px;
+
+  }
+  mat-card-actions {
+    //background: blueviolet;
+    //border: solid black 2px;
+    max-width: 100px;
+    //display: none;
+    button {
+      color: blue;
+      background: cadetblue;
+      //width : 100px;
+      border: solid black 2px;
+      border-radius: 5px;
+      margin-left: 200px; // TODO: Why it is not work?
+
+    }
+
+  }
 }
-
-
-

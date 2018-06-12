@@ -1,8 +1,8 @@
 <h1>TEST HERE</h1>
-<app-comment [comment]="comment" [isInput]="true">
+<comment-component [comment]="comment" [isInput]="true">
 
-</app-comment>
+</comment-component>
 
 <div *ngFor="let commentToShow of commentsMock">
-  <app-comment [comment]="commentToShow" [isInput]="false"></app-comment>
+  <comment-component [comment]="commentToShow" [isInput]="false"></comment-component>
 </div>

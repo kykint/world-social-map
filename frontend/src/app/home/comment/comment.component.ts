@@ -1,28 +1,28 @@
 import {Component, Input} from '@angular/core';
 import {CommentsService} from "../comment-list/comments.service";
-import {CommentModule} from "./comment.module";
+import {CommentModel} from "./comment.module";
 
 
 @Component({
-  selector: 'app-comment',
+  selector: 'comment-component',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss']
 })
 export class CommentComponent {
-  @Input() comment: CommentModule;
+  @Input() comment: CommentModel;
   @Input() isInput: boolean;
 
-  receivedComment: CommentModule;
+  receivedComment: CommentModel;
   done: boolean;
 
   constructor(private commentsService: CommentsService) {
 
   }
 
-  submit(comment: CommentModule) {
+  submit(comment: CommentModel) {
     this.commentsService.postData(this.comment)
       .subscribe(
-        (data: CommentModule) => {
+        (data: CommentModel) => {
           this.receivedComment = data;
           this.done = true;
         },
